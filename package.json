@@ -5,10 +5,15 @@
     "description": "",
     "license": "MIT",
     "scripts": {
-        "preinstall": "rm -rf node_modules && rm -f package-lock.json && rm -f yarn.lock",
+        "clean": "npm-run-all clean:*",
+        "clean:deps": "rm -rf node_modules && rm -f package-lock.json && rm -f yarn.lock",
+        "clean:dirs": "rm -rf .cache && rm -rf .dev && rm -rf .dist",
+        "preinstall": "npm run clean:deps",
         "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
-        "prestart": "rm -rf .cache && rm -rf .dev && rm -rf .dist",
+        "prestart": "npm run clean:dirs",
         "start": "parcel src/index.html --out-dir .dev --open --port 3333",
+        "prebuild": "npm run clean:dirs",
+        "build": "parcel build src/index.html --out-dir .dist --no-source-maps",
         "upgrade": "npm-check --update --save-exact"
     },
     "husky": {
