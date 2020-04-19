@@ -1,0 +1,3 @@
+export const GEONAMES_USERNAME = process.env.GEONAMES_USERNAME
+export const GOOGLEMAPS_APIKEY = process.env.GOOGLEMAPS_APIKEY
+export const OPENWEATHER_APIKEY = process.env.OPENWEATHER_APIKEY
