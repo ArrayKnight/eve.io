@@ -55,12 +55,6 @@ export default memo(
                 const weather = await OpenWeatherService.instance.getCurrentWeatherForEach(
                     [geoname, ...geonames],
                 )
-
-                setState((prev) => ({
-                    ...prev,
-                    weather,
-                }))
-
                 const distance = await GoogleMapsService.instance.getDistances(
                     geoname,
                     geonames,
@@ -69,6 +63,7 @@ export default memo(
                 setState((prev) => ({
                     ...prev,
                     loading: false,
+                    weather,
                     distance,
                 }))
             } catch (err) {

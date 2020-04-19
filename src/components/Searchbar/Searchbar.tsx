@@ -32,8 +32,10 @@ export const Searchbar = memo(
         }
 
         function onClickResult(geoname: Geoname): () => void {
+            const { name, adminName1, countryName } = geoname
+
             return () => {
-                setQuery(geoname.name)
+                setQuery(`${name}, ${adminName1}, ${countryName}`)
 
                 selectGeoname(geoname)
             }

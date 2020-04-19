@@ -47,7 +47,7 @@ export class GeonamesService {
             | GeonameError = await this.api.findNearbyPlaceName({
             lat,
             lng,
-            cities: 'cities5000',
+            cities: 'cities15000',
             radius: 300,
             maxRows: 4,
         })

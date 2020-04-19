@@ -50,7 +50,8 @@ export class OpenWeatherService {
         return data
     }
 
-    public getCurrentWeatherForEach = async (
+    // More efficient (1 API call vs 3), but not all city IDs exist
+    /*public getCurrentWeatherForEach = async (
         geonames: Geoname[],
     ): Promise<Dictionary<OpenWeatherCurrent>> => {
         const {
@@ -65,6 +66,22 @@ export class OpenWeatherService {
 
         return list.reduce(
             (dictionary, weather: OpenWeatherCurrent) => ({
+                ...dictionary,
+                [weather.id]: weather,
+            }),
+            {},
+        )
+    }*/
+
+    public getCurrentWeatherForEach = async (
+        geonames: Geoname[],
+    ): Promise<Dictionary<OpenWeatherCurrent>> => {
+        const responses = await Promise.all(
+            geonames.map(this.getCurrentWeather),
+        )
+
+        return responses.reduce(
+            (dictionary, weather) => ({
                 ...dictionary,
                 [weather.id]: weather,
             }),

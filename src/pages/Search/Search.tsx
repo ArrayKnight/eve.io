@@ -113,17 +113,19 @@ export const Search = memo(
                                     onClose={onMapClicked}
                                 >
                                     <>
-                                        <Typography variant="h4">
+                                        <Typography variant="h5">
                                             {name}
                                         </Typography>
                                         <Typography>
                                             Population: {population}
                                         </Typography>
-                                        <Typography>
-                                            Temperature:{' '}
-                                            {weather[geonameId]?.main.temp}
-                                            &deg;C
-                                        </Typography>
+                                        {weather[geonameId]?.main.temp && (
+                                            <Typography>
+                                                Temperature:{' '}
+                                                {weather[geonameId]?.main.temp}
+                                                &deg;C
+                                            </Typography>
+                                        )}
                                         {geonameId !==
                                             selectedGeoname?.geonameId && (
                                             <Typography>

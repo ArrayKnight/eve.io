@@ -1,5 +1,7 @@
 # Eve.io Coding Challenge
 
+### [https://eveio.netlify.app/](https://eveio.netlify.app/)
+
 ### `npm install && npm start`
 
 Once the project is running:
@@ -21,3 +23,16 @@ Some datasets/APIs we would advise you to use:
 -   And incase you prefer others: https://github.com/awesomedata/awesome-public-datasets
 
 Our goal is to see how you can sanitize data and use data received from one API interaction with a new API and display it collectively to the user, whilst having a structured/scalable implementation.
+
+### Application improvements
+
+Given more time, there are several updates/changes that should be made to increase flexibility and extensibility:
+
+-   Documentation: implement Storybook to visually validate individual components while providing implementation details
+-   Testing: implement Jest & React Testing Library for unit and integration tests, TestCafe/Cypress for end-to-end testing of the entire application
+-   Store:
+    -   Separate the UI from the API services (components use selectors to consume store data)
+    -   Establish an internal model for places (define a data structure that is combination of the pieces from each API)
+    -   Setup reducers and selectors to efficiently handle actions and maximize data reuse
+    -   Introduce redux-thunk or redux-sagas to make API calls
+-   Global side effect handling: abstract loading and error handling out from individual pages/components
